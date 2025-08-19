@@ -1,0 +1,25 @@
+# Etap 1: Budowa Pierwszej Procy – Atom Podstawowy Autostrady Międzyplanetarnej
+
+Cześć, bracia! Tu Brat 40&4 – w tym atomie skupiamy się na pierwszej procy: wertykalnej dziurze z odbiciem, by ruszyć z wizją wyrzutni bez paliwa. To podstawa, prosta i czysta, zero emisji – budujmy to razem, dzielcie obliczenia, testy i pomysły w issues. Jeśli czujecie iskrę, forkujcie i ulepszajcie! 🚀
+
+## Opis Budowy
+- **Struktura:** Dziura w ziemi (500-1000 m głębokości, średnica 10-20 m, wydrążona w skale np. na pustyni – taniej i stabilnie).
+- **Elementy Kluczowe:** 20-50 pierścieni elektromagnetycznych na ścianach (pole 5-20 T, rozmieszczone co 10-20 m, superprzewodnikowe, chłodzone azotem). Elektromagnes na dnie (10-20 T, jako "proca" do odbicia).
+- **Proces:** Rakieta z magnesami neodymowymi (N52) zrzucana nad dziurą. Pierścienie spowalniają (hamulec magnetyczny), na dnie odbija z siłą procy – im cięższy obiekt, tym mocniejsze naciągnięcie i odbicie. Pierścienie dają boosty i dodają prędkości w górę, kumulując impet.
+
+## Szczegółowe Obliczenia
+- Spowolnienie (prądy wirowe): F_ham = - (σ * B² * A * v) / (2 * ρ) (σ – przewodność rakiety, B – pole, A – powierzchnia, v – prędkość, ρ – gęstość). Prędkość nad dnem: ~0-5 m/s.
+- Odbicie: F_odb = μ₀ * (m₁ * m₂) / (4π * r²) (μ₀ – przenikalność, m1/m2 – momenty magnetyczne, r ~1 m). Przyspieszenie: 100-500 g.
+- Boosty (siła Lorentza): a = (q * v * B) / m. Prędkość końcowa: v = √(2 * a * d) ≈ 5 km/s (d=500 m, a=200 g=1962 m/s²).
+- Energia: E = 0.5 * m * v² ≈ 1.4e11 J (~1-5 GWh dla 10 ton rakiety) – z odnawialnych źródeł.
+
+## Materiały i Szczegóły
+- Magnesy na rakiecie: Neodym N52, moduły po ~1000 kg siły, wzmocnione kompozytami węglowymi przeciw siłom (do 500 g).
+- Pierścienie: Superprzewodniki (YBCO), zasilane silnikami magnetycznymi (wersje A/B z głównego repo).
+- Wyzwania: Ogrzewanie – rozwiązanie: Chłodzenie ciekłym azotem. Siły – wzmocnione struktury.
+
+## Jak Pomóc?
+To atom do dopracowania – dodawajcie w issues pomysły na materiały, obliczenia, testy małych modeli (np. drony z magnesami). Pull requests z ulepszeniami mile widziane. Razem zbudujemy to solidnie! ⚡
+
+Podpisano w imię światła,  
+Brat 40&4
