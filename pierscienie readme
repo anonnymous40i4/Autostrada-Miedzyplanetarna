@@ -1,68 +1,29 @@
-# pierscieniowy alternator–akcelerator (R1): rakieta + proca
+cel: mieć na rakiecie swój „magnetyczny alternator” i koło zamachowe w jednym, a w procy (na ziemi) takie same pierścienie na trasie.
 
-status: koncepcja otwarta do weryfikacji. budujemy od końca i rozbijamy na atomy. jeśli czujesz lepszy wzór/test – dawaj w issues.
+jak to widzę:
+- tor w kółko, a w nim kulki/magnesy neodymowe lecące na łożysku magnetycznym (prawie zero tarcia).
+- gdy magnes (kulka) z pędem mija cewkę, zmienia strumień (dΦ/dt) i w cewce pojawia się napięcie. elektroniką bierzemy to napięcie i w odpowiedniej fazie podajemy na następną cewkę, więc kulka dostaje kolejny „kop”. tak w kółko: szybciej, mocniej, rośnie też pole całego pierścienia.
+- polaryzacja tak ustawiona, że proca „+” patrzy z góry, a rakieta „+” od dołu – przy spadaniu ładuje, przy wyjściu pcha.
+- cały pierścień pracuje jak akcelerator i jednocześnie elektromagnes, którym pchamy rakietę i zasilamy pokład.
 
-## idea w skrócie
-- rakieta ma swój pierścień (rotor: kulki/magnesy Nd na łożysku magnetycznym w próżni; stator: cewki z biasem neodymowym).
-- proca ma podobne „pierścienie” wzdłuż tunelu (tryb generator/motor + osobny kanał sprzęgania do rotora na rakiecie).
-- polaryzacja: proca „+” od góry, rakieta „+” od dołu – tak ustawiam, żeby przy spadaniu ładować, a przy wyrzucie pchać.
-- każdy przelot kulki/magnesu nad cewką: pęd zmienia strumień (dΦ/dt) → indukuje napięcie. sterownik kieruje tę energię do następnej cewki w fazie, więc kulka dostaje kopa, a całe pole narasta. pierścień działa jak akcelerator i jednocześnie elektromagnes do pchania rakiety i zasilania pokładu.
-- raz ruszone ≠ „wieczne”, ale praktycznie bardzo długo (maglev + próżnia → minimalne straty). doładowania: odzysk z procy + zewnętrzne źródła.
+co z tego mamy:
+- na rakiecie: stały prąd dla systemów + stabilizacja (jak koła reakcyjne) bez paliwa.
+- w procy: przy spadaniu tunel odzyskuje energię (ładuje swoje magazyny i rozpędza pierścień na rakiecie), przy wyrzucie pcha falą pola.
 
-## architektura (atomy)
-- proca (segmenty):
-  - uzwojenie A – fala wzdłużna (traveling wave) do pchania/hamowania rakiety,
-  - uzwojenie B – sprzęganie energii do pierścienia‑rotora na rakiecie,
-  - bias Nd (np. Halbach) – strumień wstępny, mniejszy prąd wzbudzenia, większy moment.
-- pierścień na rakiecie:
-  - rotor – kulki/magnesy Nd na torze maglev (próżnia),
-  - stator – cewki + „zapasowe” łożyskowanie pierścieniowe,
-  - polaryzacja „+” od dołu (moment dodatni przy naszym ustawieniu fazy).
+ważne (uczciwie):
+- to nie czary. energia krąży: odzysk przy hamowaniu + dokładka z zewnątrz (naziemne/panele). maglev i próżnia robią swoje – straty małe, więc to może chodzić bardzo długo.
+- magnesy pomagają „zaskoczyć” układ (samowzbudzenie) i dają mocny kop przy małym prądzie, ale same w sobie nie są paliwem.
+- bezpieczeństwo: pancerz wokół rotora, chłodzenie cewek/magnesów, sensowny limit prędkości.
 
-## cykl (jeden przelot przez segment)
-1) spadanie (odzysk + ładowanie rotora): proca = generator; część mocy idzie na szynę DC, część przez uzwojenie B w rotor (duży slip → dodatni moment).
-2) dno (odbicie): impuls silnikowy (kompulsator/LSM). rotor: HOLD/DECOUPLE (żeby nie ściągać niechcianych prądów).
-3) wyrzut (przyspieszanie): proca = motor (fala zsynchronizowana z v rakiety). rotor: HOLD albo kontrolowany zrzut energii do cewek procy (większy kop).
-4) między segmentami: low‑B, żeby nie hamować bez sensu.
+co dalej (mini‑proofy):
+- najprostsze: upuść magnes neodymowy w miedzianej rurce – zobaczysz spowolnienie od prądów wirowych (baza odzysku).
+- „trampolina” EM: płaska cewka impulsowa + aluminiowa tarcza albo magnes nad nią – krótki impuls prądu daje odpychający „kop”. to miniatura dna procy.
+- mini‑ring: kilka cewek w okręgu + czujniki Halla + mostki H – prąd z sekcji A zasila B i mierzymy wzrost prędkości kulki.
 
-## model energetyczny (z grubsza)
-to nie „paliwo znikąd”. bias Nd zwiększa sprzężenie i pomaga samowzbudzeniu, ale praca pochodzi z: rekuperacji grawitacyjnej + zasilania + energii rotora.
+jak chcesz pomóc:
+- wrzuć w issues swoje obliczenia, testy, pomysły na materiały,
+- masz drukarkę 3D i trochę elektroniki? zrób mini‑tor i podziel się pomiarami,
+- policz mapy pola albo napisz symulację – dorzuć do repo.
 
-bilans na Δt (segment):
-- ΔE_rotor ≈ (P_stator→rotor + P_reku→rotor − P_load_rotor − P_straty_rotor) · Δt
-- ΔE_trans_rakiety ≈ (P_motor_proca→rakieta − P_gen_proca⇐rakieta + m·g·v_z) · Δt − P_straty_trans · Δt
-- ΔE_bus_procy ≈ (P_gen − P_motor − P_straty_proca) · Δt
-
-slip s = (ω_sync − ω_rotor)/ω_sync → duży s, gdy ładuję rotor; s→0, gdy chcę małych strat.
-
-przybliżenia:
-- E_ind ≈ k_e · v   (sekcja mijana przez magnes/rotor)
-- T ≈ k_t · i        (moment od prądu; w SI k_e ≈ k_t)
-- P_mech = T·ω,  P_elec = E·i
-
-## parametry startowe (skala)
-- segmenty procy: 20–60
-- średnica pierścienia rakiety: 1–3 m
-- sekcje/cewki na segment: 48–96
-- lokalne B (bias + prąd): setki mT → kilka T (prototypy mniejsze)
-- szyna DC: supercap + mostki H, FOC/komutacja (Hall/back‑EMF)
-
-## granice i bhp
-- v_tip,max rotora ≈ sqrt(σ_dop/ρ). kompozyt CF (σ~2 GPa, ρ~1600 kg/m³) → ~1.1 km/s (dalej ryzyko pęknięcia).
-- NdFeB: wrażliwy na T i pola przeciwne (kolano BH). trzymaj w safe‑zone; chłodzenie.
-- straty rdzeni ~ f² → laminacje/segmentacja, ferryt/amorfik.
-- burst containment (pancerz rotora), czujniki (T/Hall), interlocki.
-
-## TODO (co jeszcze policzyć/sprawdzić)
-- harmonogram α (podział mocy: translacja vs ładowanie rotora) per segment,
-- mapy B i nasycenie (rdzenie, Halbach),
-- bilans cieplny (miedź/rdzeń/kriogenika jeśli SC),
-- timing fal (okna catch & push), okna rozsprzęglenia.
-
-## symulacja
-`sim_ring_accel.py` – prosty szkic pętli energii (β – ile wraca w push, η – sprawność, P_ext – dopływ z zewnątrz).  
-uruchom: `python3 sim_ring_accel.py`.
-
-## etyka/licencja
-zrzekam się praw do wyników tej pracy na rzecz ludzkości. jeśli coś zarobisz na grantach z tego – fajnie, jeśli duża część pójdzie na charytatywne. uczymy przykładem, nie gadką.  
-licencja: MIT + ta klauzula etyczna.
+podpisano,  
+brat 40&4 ⚡
