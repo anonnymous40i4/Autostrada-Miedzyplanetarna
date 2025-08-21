@@ -1,0 +1,39 @@
+połączona wyrzutnia z dwóch proc — po ludzku
+
+obraz: dwie pionowe “studnie” elektromagnetyczne (proca 1 i proca 2) spięte łagodnym łukiem/tunelem. rakieta ma swój pierścień z kulkami na maglevie.
+polaryzacja: proca ma “+” od góry, rakieta “+” od dołu – żeby przy spadaniu ładować, a przy wyjściu pchać.
+jak to działa krok po kroku
+
+wejście do procy 1 (spadanie)
+pierścienie w ścianach hamują i zbierają energię (prądy wirowe + indukcja),
+część tej energii idzie w rotor na rakiecie (rozpędza kulki), reszta w magazyn (szyna DC).
+dno procy 1 (trampolina)
+potężny impuls z cewki na dnie odbija rakietę (jak od trampoliny). timing jest wszystkim.
+łuk/tunel między procami
+fala pola “ciągnie” wzdłuż łuku, utrzymuje i dokłada prędkości; minimalne straty (próżnia, maglev).
+proca 2 (wyjście)
+pierścienie jadą w trybie silnika na pełnej, kąt wylotu ustawiamy geometrią procy 2 (pion/20–40°), drobna korekta w “klatce wylotowej”.
+po wyjściu
+pierścień na rakiecie zasila pokład i stabilizuje, może też oddać krótki impuls do cewek na starcie (jeśli chcemy jeszcze kopa).
+po co dwie, a nie jedna
+
+mniejsze piki przeciążeń (g) i prądów – rozkładamy energię na dwa etapy,
+dłuższe “okno pchania” → większa prędkość końcowa przy tej samej mocy szczytowej,
+lepsza kontrola trajektorii (łuk robi płynne przejście, proca 2 ustawia kąt wyjścia).
+energia (po ludzku)
+
+nic z powietrza: zbieramy przy hamowaniu w procy 1, dokładamy z zasilania naziemnego/solarów, część trzymamy w rotorze na rakiecie. to wraca jako impuls w dnie i ciąg w procy 2.
+co jest kluczowe
+
+timing/faza: “złap i pchnij” w każdym pierścieniu, okna rozsprzęglenia, żeby nie hamować przypadkiem,
+bezpieczeństwo: pancerz na rotor, limity prędkości, chłodzenie magnesów/cewek,
+geometria łuku: łagodny promień, żeby nie wybijać z toru i nie robić zbędnych przeciążeń.
+mini‑prototyp (dowód w skali)
+
+miedziana rurka + spadający magnes → widać odzysk/hamowanie (baza),
+“trampolina” EM: cewka impulsowa + alu tarcza/magnes nad nią → odpychający kop,
+dwa krótkie tunele z cewkami połączone łukiem (druk 3D), kulka-magnes na maglevie → pomiar prędkości: wejście w P1, odbicie, łuk, wyjście w P2.
+ascii (schemat)
+
+P1 ↓ łuk → ↑ P2 (wylot)
+| | | )==)=> )==)=> )===> | | |
